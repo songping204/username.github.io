@@ -1,74 +1,75 @@
-<!-- <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>来吧</title>
-    <meta property="al:ios:url" content="https://ios-api.joydrama.tv/bingtian/haokan/" />
+    <!-- <meta property="al:ios:url" content="bingtianhk://deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx" />  -->
+    <meta property="al:ios:url" content="" />
     <meta property="al:ios:app_store_id" content="6443498031" />
-    <meta property="al:ios:app_name" content="测试APP" />
-    <meta property="og:title" content="测试标题" />
-    <meta property="og:type" content="website" />
-</head>
-<body>
-
-    <h1>测试</h1>
-
-    <p id = "demo"></p>
-
-    <button onclick="this.innerHTML=Date()"> 测试点击 </button>
-
-    <button onclick="test2()" onchange="change1()"> 又来一个按钮 </button>
-
-    <h1> javascript 对象属性 </h1>
-    <p id="demo4"></p>
-
-
-
-</body>
-
-</html> -->
-
-
-<html>
-<head>
-<meta property="al:ios:url" content="bingtianhk://deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx" /> 
-<meta property="al:ios:app_store_id" content="6443498031" /> 
-<meta property="al:ios:app_name" content="爽剧TV测试版本" />
-
-<meta property="al:ios:app_name" content="测试内容" />
-<meta property="og:title" content="测试标题11" />
-<meta property="og:image" content="https://static.joydrama.tv/cover/6296cd27896e0.jpg" />
-<meta property="og:description" content="背景：游戏产品需要接入facebook分享，这就要使用到facebook的App links功能，查看官方网站，遇到了一些坑，发现国内很少有人有这方面的介绍，记录下来供后来人使用。首先了解一下：facebook的App links与Deep links不是一个东东，Deep ..." />
-
-<!-- <meta property="al:android:url" content="applinks://docs" />  //android的scheme地址
+    <meta property="al:ios:app_name" content="爽剧TV测试版本" />
+    <meta property="og:title" content="测试标题11" />
+    <!-- <meta property="og:image" content="https://static.joydrama.tv/cover/6296cd27896e0.jpg" /> -->
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="">
+    <!-- <meta property="og:description" content="背景：游戏产品需要接入facebook分享，这就要使用到facebook的App links功能，查看官方网站，遇到了一些坑，发现国内很少有人有这方面的介绍，记录下来供后来人使用。首先了解一下：facebook的App links与Deep links不是一个东东，Deep ..." /> -->
+    <!-- <meta property="al:android:url" content="applinks://docs" />  //android的scheme地址
 <meta property="al:android:app_name" content="App Links" /> //android应用名字
 <meta property="al:android:package" content="org.applinks" /> 应用包名 -->
- 
-<meta http-equiv="refresh" content="0;url=https://itunes.apple.com/app/id6443498031">
- 
-<!-- <meta property="al:web:url"
+    <!-- <meta http-equiv="refresh" content="0;url=https://itunes.apple.com/app/id6443498031"> -->
+    <!-- <meta property="al:web:url"
 content="http://applinks.org/documentation" /> //web端的，我直接干掉了 -->
-
-<title>爽剧TV1</title>
-
-
-<!-- <meta name="title" content="武漢爆發大規模集會 老人抗議削減個人醫保賬戶資金－ BBC News 中文">
+    <title>爽剧TV1</title>
+    <!-- <meta name="title" content="武漢爆發大規模集會 老人抗議削減個人醫保賬戶資金－ BBC News 中文">
 <meta name="description" content="中國中部的武漢市週三（2月15日）爆發大規模集會抗議，約有數百名老年人在中山公園大門附近聚集，反對當局推行的一項醫療保險改革計劃。抗議者指責新規導致每月直接劃入個人賬戶的補貼資金減少。影片顯示，大批身穿制服的警察被部署到現場。武漢市政府沒有回應BBC的置評請求。BBC News 中文: https://www.b...">
 <link rel="shortlinkUrl" href="https://youtu.be/buBqcRgFReo"> -->
-
 </head>
-<body>
-    <p>Hello, world! //这个不需要，我们想直接跳转11</p>
-</body>
+<style type="text/css">
+#videoImg {
+    width: 100%;
+    height: 100%;
+    /*  cover */
+    object-fit: contain;
+}
+</style>
 
+<body>
+    <div>
+        <img id="videoImg" src="">
+    </div>
+</body>
 <script type="text/javascript">
-    
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+    }
+    return (false);
+}
+
+var vid = getQueryVariable("vid");
+var imgUrl = getQueryVariable("url");
+var des = getQueryVariable("des");
+
+var videoImg1 = document.getElementById("videoImg");
+// imgUrl = "https://static.joydrama.tv/cover/6296cd27896e0.jpg";
+videoImg1.src = imgUrl;
+
+//meta 标签
+var metaList = document.getElementsByTagName("meta");
+for (var i = 0; i < metaList.length; i++) {
+    if (metaList[i].getAttribute("property") == "og:image") {
+        // alert(metaList[i].getAttribute("content"))
+        metaList[i].content = imgUrl;
+        alert(metaList[i].content);
+    } else if (metaList[i].getAttribute("property") == "og:description") {
+        // alert(metaList[i].getAttribute("content"));
+        metaList[i].content = des;
+        alert(metaList[i].content);
+    } else if (metaList[i].getAttribute("property") == "al:ios:url") {
+        metaList[i].content = "bingtianhk://deeplink?fullpath=theater_play&vid=" + vid + "&id=1&channel=xxx";
+        alert(metaList[i].content);
+    }
+}
 </script>
 
 </html>
-
-
-
-
-
