@@ -60,14 +60,14 @@ for (var i = 0; i < metaList.length; i++) {
     if (metaList[i].getAttribute("property") == "og:image") {
         // alert(metaList[i].getAttribute("content"))
         metaList[i].content = imgUrl;
-        alert(metaList[i].content);
+        // alert(metaList[i].content);
     } else if (metaList[i].getAttribute("property") == "og:description") {
         // alert(metaList[i].getAttribute("content"));
         metaList[i].content = des;
-        alert(metaList[i].content);
+        // alert(metaList[i].content);
     } else if (metaList[i].getAttribute("property") == "al:ios:url") {
         metaList[i].content = "bingtianhk://deeplink?fullpath=theater_play&vid=" + vid + "&id=1&channel=xxx";
-        alert(metaList[i].content);
+        // alert(metaList[i].content);
     }
 }
 </script>
