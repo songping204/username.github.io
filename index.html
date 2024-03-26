@@ -105,7 +105,7 @@ for (var i = 0; i < metaList.length; i++) {
     }
 }
 
-autoSkip();
+// autoSkip();
 
 // 打开app
 function openApp(){
@@ -119,18 +119,20 @@ function skipToAppStore(){
 
 // 自动跳转
 function autoSkip(){
-    // window.location.href = "https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx";
+    window.location.href = "https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx";
     // setTimeout(function(){
     //     window.location.href = "https://apps.apple.com/app/id6443498031";
     // }, 2000)
-    window.location.href = 'https://app.adjust.com/jsr?url=https%3A%2F%2F8up5.adj.st%2Fdeeplink%3F%26adj_t%3D1alea7l5%26vid%3D4211';
+    // window.location.href = 'https://app.adjust.com/jsr?url=https%3A%2F%2F8up5.adj.st%2Fdeeplink%3F%26adj_t%3D1alea7l5%26vid%3D4211';
 }
 
 document.getElementById('appLink').addEventListener('click', function(event) {
   // Prevent default behavior of the link
   event.preventDefault();
 
-  window.location.href = 'https://app.adjust.com/jsr?url=https%3A%2F%2F8up5.adj.st%2Fdeeplink%3F%26adj_t%3D1alea7l5%26vid%3D4211';
+//   window.location.href = 'https://app.adjust.com/jsr?url=https%3A%2F%2F8up5.adj.st%2Fdeeplink%3F%26adj_t%3D1alea7l5%26vid%3D4211';
+
+window.location.href = 'tikshortsww://deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx&pagefrom=xxx';
 
 //   // Try to open the app
 //   window.location.href = 'https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx';
