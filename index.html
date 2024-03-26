@@ -60,6 +60,7 @@ content="http://applinks.org/documentation" /> //web端的，我直接干掉了 
     <div class="buttonDiv">
          <button class="openBtn" onclick="autoSkip()" >打开app</button>
         <button class="installBtn" onclick="skipToAppStore()">跳转AppStore</button>
+        <a id="appLink" href="https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx">Open App</a>
     </div>
 
     <div class="imgDiv">
@@ -113,16 +114,30 @@ function openApp(){
 
 // 跳转商店
 function skipToAppStore(){
-    window.location.href = "https://itunes.apple.com/app/id6443498031";
+    window.location.href = "https://apps.apple.com/app/id6443498031";
 }
 
 // 自动跳转
 function autoSkip(){
     window.location.href = "https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx";
     setTimeout(function(){
-        window.location.href = "https://itunes.apple.com/app/id6443498031";
+        window.location.href = "https://apps.apple.com/app/id6443498031";
     }, 2000)
 }
+
+document.getElementById('appLink').addEventListener('click', function(event) {
+  // Prevent default behavior of the link
+  event.preventDefault();
+
+  // Try to open the app
+  window.location.href = 'https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx';
+
+  // Set a timeout to check if the app opened successfully
+  setTimeout(function() {
+    // If the app didn't open, redirect to App Store
+    window.location.href = 'https://apps.apple.com/app/id6443498031';
+  }, 5000);
+});
 
 </script>
 
