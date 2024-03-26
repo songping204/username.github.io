@@ -133,11 +133,17 @@ document.getElementById('appLink').addEventListener('click', function(event) {
   window.location.href = 'https://api-ios.tikshortsbox.com/tikshorts/drama/deeplink?fullpath=theater_play&vid=2264&id=1&channel=xxx';
 
   // Set a timeout to check if the app opened successfully
-  setTimeout(function() {
+  var timeout = setTimeout(function() {
     // If the app didn't open, redirect to App Store
     window.location.href = 'https://apps.apple.com/app/id6443498031';
   }, 500);
 });
+
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+      clearTimeout(timeout);
+    }
+  });
 
 </script>
 
